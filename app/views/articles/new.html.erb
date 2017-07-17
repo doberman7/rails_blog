@@ -1,0 +1,17 @@
+<!-- In this case, it's the symbol :article. This tells the form_for helper what this form is for. Inside the block for this method, the FormBuilder object - represented by f - is used to build two labels and two text fields, one each for the title and text of an article. Finally, a call to submit on the f object will create a submit button for the form. -->
+<h1>New Article</h1>
+<%= form_for :article, url: articles_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
