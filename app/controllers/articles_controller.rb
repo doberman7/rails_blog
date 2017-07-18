@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    
+
   @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -43,6 +43,14 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
   end
+
+# The destroy method is generally the last CRUD action in the controller, and like the other public CRUD actions, it must be placed before any private or protected methods
+def destroy
+  @article = Article.find(params[:id])
+  @article.destroy
+
+  redirect_to articles_path
+end
 
   private
   ##We have to whitelist our controller parameters to prevent wrongful mass assignment. In this case, we want to both allow and require the title and text parameters for valid use of create
