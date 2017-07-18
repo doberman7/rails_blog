@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :articles
 
   # root 'welcome#index' tells Rails to map requests to the root of the application to the welcome controller's index action and get 'welcome/index' tells Rails to map requests to http://localhost:3000/welcome/index to the welcome controller's index action
+  # el root es el primero en cargar
   root 'welcome#index'
-# 1 es el root
+  
+    resources :articles do
+    resources :comments
+  end
 
 
 
