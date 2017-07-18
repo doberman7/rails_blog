@@ -7,34 +7,13 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
-<!-- VER comment -->
+<!-- RENDER  comments parcial -->
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
-<!--  añadir coment-->
+  <!-- This will now render the partial in app/views/comments/_comment.html.erb once for each comment that is in the @article.comments collection. As the render method iterates over the @article.comments collection, it assigns each comment to a local variable named the same as the partial, in this case comment which is then available in the partial for us to show. -->
+<%= render @article.comments %>
+<!-- RENDER parcial add a coment-->
 <h2>Add a comment:</h2>
-<%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 

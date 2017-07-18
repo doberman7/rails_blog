@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  # we need to have a way to block access to the various actions if the person is not authenticated. Here we can use the Rails http_basic_authenticate_with method, which allows access to the requested action if that method allows it.
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
   #mostrar todos los articulos
   def index
     @articles = Article.all
